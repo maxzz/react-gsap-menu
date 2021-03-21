@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import gsap from "gsap";
-import "./App.css";
+import "./App.scss";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [doGoo, setDoGoo] = useState(true);
 
     function move(id: string, position: string, color: string) {
         var tl = gsap.timeline();
         tl
             .to("#bgBubble", { duration: 0.15, bottom: "-30px", ease: "ease-out" }, 0)
+
             .to("#bubble1", { duration: 0.1, y: "120%", boxShadow: 'none', ease: "ease-out", }, 0)
             .to("#bubble2", { duration: 0.1, y: "120%", boxShadow: 'none', ease: "ease-out", }, 0)
             .to("#bubble3", { duration: 0.1, y: "120%", boxShadow: 'none', ease: "ease-out", }, 0)
             .to("#bubble4", { duration: 0.1, y: "120%", boxShadow: 'none', ease: "ease-out", }, 0)
+
             .to(".icon", { duration: 0.05, opacity: 0, ease: "ease-out", }, 0)
             .to("#bgBubble", { duration: 0.2, left: position, ease: "ease-in-out" }, 0.1)
             .to("#bgBubble", { duration: 0.15, bottom: "-50px", ease: "ease-out" }, '-=0.2')
+
             .to(`#bubble${id}`, { duration: 0.15, y: "0%", opacity: 1, boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)', ease: "ease-out" }, '-=0.1')
             .to(`#bubble${id}> span`, { duration: 0.15, y: "0%", opacity: 0.7, ease: "ease-out" }, '-=0.1')
+
             .to("#navbarContainer", { duration: 0.3, backgroundColor: color, ease: "ease-in-out" }, 0)
             .to("#bg", { duration: 0.3, backgroundColor: color, ease: "ease-in-out" }, 0)
             .to("#bgBubble", { duration: 0.3, backgroundColor: color, ease: "ease-in-out" }, 0);
@@ -46,16 +50,21 @@ function App() {
                 </div>
             </div>
 
-            <svg width="0" height="0" >
-                <defs>
-                    <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" id="blurFilter" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -15" result="goo" />
-                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                    </filter>
-                </defs>
-            </svg>
+            {doGoo &&
+                <svg width="0" height="0">
+                    <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" id="blurFilter" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -15" result="goo" />
+                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                        </filter>
+                    </defs>
+                </svg>            
+            }
 
+            <div style={{marginTop: '.4em', color: '#fefefe'}}>
+                <label><input type="checkbox" onClick={() => setDoGoo(!doGoo)}/>&nbsp;GOO</label>
+            </div>
         </div>
     );
 }
