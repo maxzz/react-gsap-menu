@@ -38,10 +38,10 @@ function App() {
                         <div id="bubble4" className="bubble"><span className="icon"><i className="fas fa-user"></i></span></div>
                     </div>
                     <div id="menuWrapper">
-                        <div id="menu1" className="menuElement" onClick={() => move('1', '50px', '#ffcc80')}><i className="fas fa-home"></i></div>
-                        <div id="menu2" className="menuElement" onClick={() => move('2', '150px', '#81d4fa')}><i className="fab fa-twitter"></i></div>
-                        <div id="menu3" className="menuElement" onClick={() => move('3', '250px', '#c5e1a5')}><i className="fas fa-bell"></i></div>
-                        <div id="menu4" className="menuElement" onClick={() => move('4', '350px', '#ce93d8')}><i className="fas fa-user"></i></div>
+                        <div id="menu1" className="menuElement" onClick={() => move('1', '50px', '#DDD6FE')}><i className="fas fa-home"></i></div>
+                        <div id="menu2" className="menuElement" onClick={() => move('2', '150px', '#C4B5FD')}><i className="fab fa-twitter"></i></div>
+                        <div id="menu3" className="menuElement" onClick={() => move('3', '250px', '#A78BFA')}><i className="fas fa-bell"></i></div>
+                        <div id="menu4" className="menuElement" onClick={() => move('4', '350px', '#8B5CF6')}><i className="fas fa-user"></i></div>
                     </div>
                 </div>
                 <div id="bgWrapper">
